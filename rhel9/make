@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+# cleanup old files
+rm -rf /tmp/dist
+mkdir -p /tmp/dist/summary/{check,notification}-plugins
+
+for dir in /app/monitoring-plugins/check-plugins/*; do
+    check="$(basename $dir)"
+    if [ "$check" != "example" ]; then
+#    if [ "$check" == "about-me" ]; then
+        echo -e "\ncompiling $check..."
+        pyinstaller --clean --distpath /tmp/dist/check-plugins --workpath /tmp/build/check-plugins --specpath /tmp/spec/check-plugins --noconfirm --noupx --onedir "$dir/${check}"
+    fi
+done
+mkdir -p /tmp/dist/check-plugins/ && \cp -a /tmp/dist/check-plugins/ /tmp/dist/summary/check-plugins
+
+
+
+for dir in /app/monitoring-plugins/notification-plugins/*; do
+    notification="$(basename $dir)"
+    if [ "$notification" != "example" ]; then
+#    if [ "$notification" == "about-me" ]; then
+        echo -e "\ncompiling $notification..."
+        pyinstaller --clean --distpath /tmp/dist/notification-plugins --workpath /tmp/build/notification-plugins --specpath /tmp/spec/notification-plugins --noconfirm --noupx --onedir "$dir/${notification}"
+    fi
+done
+mkdir -p /tmp/dist/notification-plugins/ && \cp -a /tmp/dist/notification-plugins/ /tmp/dist/summary/notification-plugins
+
+

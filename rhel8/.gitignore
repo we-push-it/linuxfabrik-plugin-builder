@@ -1,0 +1,15 @@
+../.idea
+pyinstaller
+lib
+monitoring-plugins
+get-pip.py*
+
+check-plugins/*.deb
+check-plugins/*.rpm
+check-plugins/*.zip
+check-plugins/*.tar
+
+notification-plugins/*.deb
+notification-plugins/*.rpm
+notification-plugins/*.zip
+notification-plugins/*.tar
