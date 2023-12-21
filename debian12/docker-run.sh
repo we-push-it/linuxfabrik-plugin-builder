@@ -22,8 +22,8 @@ chmod +x /app/notification-plugins/runFor.sh
 
 
 cd /shareall/
-mkdir -p debian10-$(lscpu | grep -oP "Architecture:\K.*" | sed -e 's/^[ \t]*//')/check-plugins
-cd debian10-$(lscpu | grep -oP "Architecture:\K.*" | sed -e 's/^[ \t]*//')/check-plugins
+mkdir -p debian12-$(lscpu | grep -oP "Architecture:\K.*" | sed -e 's/^[ \t]*//')/check-plugins
+cd debian12-$(lscpu | grep -oP "Architecture:\K.*" | sed -e 's/^[ \t]*//')/check-plugins
 
 cat > .fpm << EOF
 --after-install rpm-post-install
@@ -33,21 +33,21 @@ cat > .fpm << EOF
 --input-type dir
 --license "The Unlicense"
 --maintainer "info@linuxfabrik.ch"
---name linuxfabrik-monitoring-check-plugins-debian10
+--name linuxfabrik-monitoring-check-plugins-debian12
 --rpm-summary "The Linuxfabrik Monitoring Plugins Collection (Check Plugins)"
 --url "https://github.com/Linuxfabrik/monitoring-plugins"
 --vendor "Linuxfabrik GmbH, Zurich, Switzerland"
 --version $RELEASE
 EOF
 
-#fpm --output-type deb
+fpm --output-type deb
 fpm --output-type tar
 
 
 
 cd /shareall/
-mkdir -p debian10-$(lscpu | grep -oP "Architecture:\K.*" | sed -e 's/^[ \t]*//')/notification-plugins
-cd debian10-$(lscpu | grep -oP "Architecture:\K.*" | sed -e 's/^[ \t]*//')/notification-plugins
+mkdir -p debian12-$(lscpu | grep -oP "Architecture:\K.*" | sed -e 's/^[ \t]*//')/notification-plugins
+cd debian12-$(lscpu | grep -oP "Architecture:\K.*" | sed -e 's/^[ \t]*//')/notification-plugins
 
 cat > .fpm << EOF
 --after-install rpm-post-install
@@ -57,14 +57,14 @@ cat > .fpm << EOF
 --input-type dir
 --license "The Unlicense"
 --maintainer "info@linuxfabrik.ch"
---name linuxfabrik-monitoring-notification-plugins-debian10
+--name linuxfabrik-monitoring-notification-plugins-debian12
 --rpm-summary "The Linuxfabrik Monitoring Plugins Collection (Check Plugins)"
 --url "https://github.com/Linuxfabrik/monitoring-plugins"
 --vendor "Linuxfabrik GmbH, Zurich, Switzerland"
 --version $RELEASE
 EOF
 
-#fpm --output-type deb
+fpm --output-type deb
 fpm --output-type tar
 
 rm -R /app/monitoring-plugins

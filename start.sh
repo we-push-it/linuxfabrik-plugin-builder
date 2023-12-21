@@ -72,6 +72,7 @@ function debian10 () {
   docker run \
   --rm \
   --mount type=bind,source="$(pwd)/debian10",target=/app \
+  --mount type=bind,source="/mnt/shareall/linuxfabrik-monitoring-plugins",target=/shareall \
   linuxfabrik-plugin-builder:debian10
   
 }
@@ -88,8 +89,26 @@ function debian11 () {
   docker run \
   --rm \
   --mount type=bind,source="$(pwd)/debian11",target=/app \
+  --mount type=bind,source="/mnt/shareall/linuxfabrik-monitoring-plugins",target=/shareall \
   linuxfabrik-plugin-builder:debian11
   
+}
+
+#debian12
+function debian12 () {
+
+  docker build \
+  --no-cache \
+  --force-rm \
+  -t linuxfabrik-plugin-builder:debian12 \
+  ./debian12
+
+  docker run \
+  --rm \
+  --mount type=bind,source="$(pwd)/debian12",target=/app \
+  --mount type=bind,source="/mnt/shareall/linuxfabrik-monitoring-plugins",target=/shareall \
+  linuxfabrik-plugin-builder:debian12
+
 }
 
 #ubuntu18
@@ -180,6 +199,7 @@ function all () {
   rhel9;
   debian10;
   debian11;
+  debian12;
   ubuntu18;
   ubuntu20;
   ubuntu22;
@@ -200,6 +220,7 @@ function debian-all () {
 
   debian10;
   debian11;
+  debian12;
 
 }
 
@@ -229,6 +250,7 @@ case "$1" in
     'debian-all') "$@"; exit;;
     'debian10') "$@"; exit;;
     'debian11') "$@"; exit;;
+    'debian12') "$@"; exit;;
     'ubuntu-all') "$@"; exit;;
     'ubuntu18') "$@"; exit;;
     'ubuntu20') "$@"; exit;;
@@ -250,6 +272,7 @@ case "$1" in
     echo '- debian-all';
     echo '- debian10';
     echo '- debian11';
+    echo '- debian12';
     echo '';
     echo '- ubuntu-all';
     echo '- ubuntu18';

@@ -42,4 +42,6 @@ RUN pip install xmltodict
 
 
 RUN chmod +x /app/docker-run.sh
-ENTRYPOINT ["/app/docker-run.sh"]
+#ENTRYPOINT ["/app/docker-run.sh"]
+ENTRYPOINT ["tail", "-f", "/dev/null"]
+

@@ -19,7 +19,12 @@ chmod +x /app/check-plugins/runFor.sh
 chmod +x /app/notification-plugins/runFor.sh
 /app/notification-plugins/runFor.sh
 
-cd /app/check-plugins
+
+
+cd /shareall/
+mkdir -p debian11-$(lscpu | grep -oP "Architecture:\K.*" | sed -e 's/^[ \t]*//')/check-plugins
+cd debian11-$(lscpu | grep -oP "Architecture:\K.*" | sed -e 's/^[ \t]*//')/check-plugins
+
 cat > .fpm << EOF
 --after-install rpm-post-install
 --architecture all
@@ -28,7 +33,7 @@ cat > .fpm << EOF
 --input-type dir
 --license "The Unlicense"
 --maintainer "info@linuxfabrik.ch"
---name linuxfabrik-monitoring-plugins
+--name linuxfabrik-monitoring-check-plugins-debian11
 --rpm-summary "The Linuxfabrik Monitoring Plugins Collection (Check Plugins)"
 --url "https://github.com/Linuxfabrik/monitoring-plugins"
 --vendor "Linuxfabrik GmbH, Zurich, Switzerland"
@@ -38,16 +43,21 @@ EOF
 fpm --output-type deb
 fpm --output-type tar
 
-cd /app/notification-plugins
+
+
+cd /shareall/
+mkdir -p debian11-$(lscpu | grep -oP "Architecture:\K.*" | sed -e 's/^[ \t]*//')/notification-plugins
+cd debian11-$(lscpu | grep -oP "Architecture:\K.*" | sed -e 's/^[ \t]*//')/notification-plugins
+
 cat > .fpm << EOF
 --after-install rpm-post-install
---architecture all
+--architecture $(lscpu | grep -oP "Architecture:\K.*" | sed -e 's/^[ \t]*//')
 --chdir /tmp/dist/summary/check-plugins
 --description "This Enterprise Class Check Plugin Collection offers a bunch of Nagios-compatible check plugins for Icinga, Naemon, Nagios, OP5, Shinken, Sensu and other monitoring applications. Each plugin is a stand-alone command line tool that provides a specific type of check. Typically, your monitoring software will run these check plugins to determine the current status of hosts and services on your network."
 --input-type dir
 --license "The Unlicense"
 --maintainer "info@linuxfabrik.ch"
---name linuxfabrik-monitoring-plugins
+--name linuxfabrik-monitoring-notification-plugins-debian11
 --rpm-summary "The Linuxfabrik Monitoring Plugins Collection (Check Plugins)"
 --url "https://github.com/Linuxfabrik/monitoring-plugins"
 --vendor "Linuxfabrik GmbH, Zurich, Switzerland"
