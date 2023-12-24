@@ -24,6 +24,7 @@ chmod +x /app/notification-plugins/runFor.sh
 cd /shareall/
 mkdir -p debian12-$(lscpu | grep -oP "Architecture:\K.*" | sed -e 's/^[ \t]*//')/check-plugins
 cd debian12-$(lscpu | grep -oP "Architecture:\K.*" | sed -e 's/^[ \t]*//')/check-plugins
+cp /app/check-plugins/rpm-post-install .
 
 cat > .fpm << EOF
 --after-install rpm-post-install
@@ -48,6 +49,7 @@ fpm --output-type tar
 cd /shareall/
 mkdir -p debian12-$(lscpu | grep -oP "Architecture:\K.*" | sed -e 's/^[ \t]*//')/notification-plugins
 cd debian12-$(lscpu | grep -oP "Architecture:\K.*" | sed -e 's/^[ \t]*//')/notification-plugins
+cp /app/notification-plugins/rpm-post-install .
 
 cat > .fpm << EOF
 --after-install rpm-post-install
@@ -66,6 +68,9 @@ EOF
 
 fpm --output-type deb
 fpm --output-type tar
+
+rm debian12-$(lscpu | grep -oP "Architecture:\K.*" | sed -e 's/^[ \t]*//')/check-plugins/rpm-post-install
+rm debian12-$(lscpu | grep -oP "Architecture:\K.*" | sed -e 's/^[ \t]*//')/notification-plugins/rpm-post-install
 
 rm -R /app/monitoring-plugins
 rm -R /app/lib
