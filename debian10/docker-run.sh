@@ -69,8 +69,8 @@ EOF
 #fpm --output-type deb
 fpm --output-type tar
 
-rm debian10-$(lscpu | grep -oP "Architecture:\K.*" | sed -e 's/^[ \t]*//')/check-plugins/rpm-post-install
-rm debian10-$(lscpu | grep -oP "Architecture:\K.*" | sed -e 's/^[ \t]*//')/notification-plugins/rpm-post-install
+rm /shareall/debian10-$(lscpu | grep -oP "Architecture:\K.*" | sed -e 's/^[ \t]*//')/check-plugins/rpm-post-install
+rm /shareall/debian10-$(lscpu | grep -oP "Architecture:\K.*" | sed -e 's/^[ \t]*//')/notification-plugins/rpm-post-install
 
 rm -R /app/monitoring-plugins
 rm -R /app/lib
