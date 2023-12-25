@@ -16,6 +16,7 @@ function rhel7 () {
   docker run \
   --rm \
   --mount type=bind,source="$(pwd)/rhel7",target=/app \
+  --mount type=bind,source="/mnt/shareall/linuxfabrik-monitoring-plugins",target=/shareall \
   linuxfabrik-plugin-builder:rhel7
 
 }
@@ -36,6 +37,7 @@ function rhel8 () {
   docker run \
   --rm \
   --mount type=bind,source="$(pwd)/rhel8",target=/app \
+  --mount type=bind,source="/mnt/shareall/linuxfabrik-monitoring-plugins",target=/shareall \
   linuxfabrik-plugin-builder:rhel8
 
 }
@@ -56,6 +58,7 @@ function rhel9 () {
   docker run \
   --rm \
   --mount type=bind,source="$(pwd)/rhel9",target=/app \
+  --mount type=bind,source="/mnt/shareall/linuxfabrik-monitoring-plugins",target=/shareall \
   linuxfabrik-plugin-builder:rhel9
   
 }
@@ -123,6 +126,7 @@ function ubuntu18 () {
   docker run \
   --rm \
   --mount type=bind,source="$(pwd)/ubuntu18",target=/app \
+  --mount type=bind,source="/mnt/shareall/linuxfabrik-monitoring-plugins",target=/shareall \
   linuxfabrik-plugin-builder:ubuntu18
   
 }
@@ -139,6 +143,7 @@ function ubuntu20 () {
   docker run \
   --rm \
   --mount type=bind,source="$(pwd)/ubuntu20",target=/app \
+  --mount type=bind,source="/mnt/shareall/linuxfabrik-monitoring-plugins",target=/shareall \
   linuxfabrik-plugin-builder:ubuntu20
   
 }
@@ -155,6 +160,7 @@ function ubuntu22 () {
   docker run \
   --rm \
   --mount type=bind,source="$(pwd)/ubuntu22",target=/app \
+  --mount type=bind,source="/mnt/shareall/linuxfabrik-monitoring-plugins",target=/shareall \
   linuxfabrik-plugin-builder:ubuntu22
   
 }
@@ -171,6 +177,7 @@ function oracle8-6 () {
   docker run \
   --rm \
   --mount type=bind,source="$(pwd)/oracle8-6",target=/app \
+  --mount type=bind,source="/mnt/shareall/linuxfabrik-monitoring-plugins",target=/shareall \
   linuxfabrik-plugin-builder:oracle8-6
 
 }
@@ -187,6 +194,7 @@ function oracle8-7 () {
   docker run \
   --rm \
   --mount type=bind,source="$(pwd)/oracle8-7",target=/app \
+  --mount type=bind,source="/mnt/shareall/linuxfabrik-monitoring-plugins",target=/shareall \
   linuxfabrik-plugin-builder:oracle8-7
 
 }
