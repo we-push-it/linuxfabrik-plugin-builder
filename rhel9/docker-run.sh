@@ -32,7 +32,7 @@ cat > .fpm << EOF
 --input-type dir
 --license "The Unlicense"
 --maintainer "info@linuxfabrik.ch"
---name linuxfabrik-monitoring-plugins
+--name linuxfabrik-monitoring-check-plugins-rhel9
 --rpm-summary "The Linuxfabrik Monitoring Plugins Collection (Check Plugins)"
 --url "https://github.com/Linuxfabrik/monitoring-plugins"
 --vendor "Linuxfabrik GmbH, Zurich, Switzerland"
@@ -51,12 +51,12 @@ cp /app/notification-plugins/rpm-post-install .
 cat > .fpm << EOF
 --after-install rpm-post-install
 --architecture $(lscpu | grep -oP "Architecture:\K.*" | sed -e 's/^[ \t]*//')
---chdir /tmp/dist/summary/check-plugins
+--chdir /tmp/dist/summary/notification-plugins
 --description "This Enterprise Class Check Plugin Collection offers a bunch of Nagios-compatible check plugins for Icinga, Naemon, Nagios, OP5, Shinken, Sensu and other monitoring applications. Each plugin is a stand-alone command line tool that provides a specific type of check. Typically, your monitoring software will run these check plugins to determine the current status of hosts and services on your network."
 --input-type dir
 --license "The Unlicense"
 --maintainer "info@linuxfabrik.ch"
---name linuxfabrik-monitoring-plugins
+--name linuxfabrik-monitoring-notification-plugins-rhel9
 --rpm-summary "The Linuxfabrik Monitoring Plugins Collection (Check Plugins)"
 --url "https://github.com/Linuxfabrik/monitoring-plugins"
 --vendor "Linuxfabrik GmbH, Zurich, Switzerland"
