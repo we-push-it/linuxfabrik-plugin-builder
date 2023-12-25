@@ -41,7 +41,7 @@ cat > .fpm << EOF
 --version $RELEASE
 EOF
 
-#fpm --output-type deb
+fpm --output-type deb
 fpm --output-type tar
 
 
@@ -66,7 +66,7 @@ cat > .fpm << EOF
 --version $RELEASE
 EOF
 
-#fpm --output-type deb
+fpm --output-type deb
 fpm --output-type tar
 
 rm /shareall/debian10-$(lscpu | grep -oP "Architecture:\K.*" | sed -e 's/^[ \t]*//')/check-plugins/rpm-post-install
