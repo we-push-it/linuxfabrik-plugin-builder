@@ -29,4 +29,3 @@ RUN source /root/.bash_profile
 
 RUN chmod +x /app/docker-run.sh
 ENTRYPOINT ["/app/docker-run.sh"]
-#ENTRYPOINT ["tail", "-f", "/dev/null"]
