@@ -28,7 +28,7 @@ cp /app/check-plugins/rpm-post-install .
 
 cat > .fpm << EOF
 --after-install rpm-post-install
---architecture all
+--architecture $(lscpu | grep -oP "Architecture:\K.*" | sed -e 's/^[ \t]*//')
 --chdir /tmp/dist/summary/check-plugins
 --description "This Enterprise Class Check Plugin Collection offers a bunch of Nagios-compatible check plugins for Icinga, Naemon, Nagios, OP5, Shinken, Sensu and other monitoring applications. Each plugin is a stand-alone command line tool that provides a specific type of check. Typically, your monitoring software will run these check plugins to determine the current status of hosts and services on your network."
 --input-type dir
