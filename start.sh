@@ -211,6 +211,8 @@ function all () {
   rhel7;
   rhel8;
   rhel9;
+  oracle8-6;
+  oracle8-7;
 
 }
 
