@@ -202,15 +202,15 @@ function oracle8-7 () {
 #all
 function all () {
 
-  rhel7;
-  rhel8;
-  rhel9;
   debian10;
   debian11;
   debian12;
   ubuntu18;
   ubuntu20;
   ubuntu22;
+  rhel7;
+  rhel8;
+  rhel9;
 
 }
 
