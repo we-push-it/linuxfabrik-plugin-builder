@@ -1,2 +1,0 @@
-restorecon -r /usr/lib64/nagios
-setsebool -P nagios_run_sudo on

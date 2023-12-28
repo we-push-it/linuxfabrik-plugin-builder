@@ -108,8 +108,7 @@ function debian12 () {
 
   docker run \
   --rm \
-  --mount type=bind,source="$(pwd)/debian12",target=/app \
-  --mount type=bind,source="/mnt/shareall/linuxfabrik-monitoring-plugins",target=/shareall \
+  --mount type=bind,source="/home/lukas/test2/linuxfabrik-monitoring-plugins",target=/build \
   linuxfabrik-plugin-builder:debian12
 
 }
